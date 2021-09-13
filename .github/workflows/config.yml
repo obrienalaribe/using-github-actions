@@ -38,3 +38,14 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+    deploy-to-dev:
+      run-on: ubuntu-latest
+      needs: build
+      environment:
+        name: Dev
+        url: localhost:8080
+        
+      steps:
+      - name: Build some Artifact
+        run: echo just reading some env vars {{ $env.url }}
+    
