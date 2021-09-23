@@ -4,13 +4,11 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-#   push:
-#     branches: [ "*" ]
+  push:
+    branches: [ "*" ]
   pull_request:
     branches: [ "*" ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
 env:
@@ -26,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: echo {{ $IMAGE_TAG }} and {{ env.IMAGE_TAG }}
 
       - name: Run a multi-line script
         run: |
